@@ -25,6 +25,7 @@
 }
 
 .imageContainer {
+  position: relative;
   width: 200px;
   height: 300px;
 }
@@ -42,4 +43,8 @@
 .buttonGroup {
   display: flex;
   column-gap: 5px;
+}
+
+button.active {
+  border-color: red;
 }
