@@ -1,8 +1,14 @@
+.mainContainer {
+  display: flex;
+  justify-content: center;
+}
+
 .card {
   margin: 10rem 4rem;
   padding: 5rem 10rem;
   background-color: rgb(58, 68, 79);
   width: unset;
+  max-width: 850px;
 }
 
 .grid {
@@ -45,6 +51,13 @@
   column-gap: 5px;
 }
 
-button.active {
+.buttonGroup a {
+  border: 2px solid #ddd;
+  padding: 3px 5px;
+  color: white;
+  text-decoration: none;
+}
+
+a.active {
   border-color: red;
 }

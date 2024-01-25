@@ -2,7 +2,8 @@
 
 import Image from 'next/image'
 import classes from './page.module.css'
-import { useState } from 'react'
+import Link from 'next/link'
+import { useSearchParams } from 'next/navigation'
 
 //
 
@@ -28,17 +29,13 @@ const data = {
 //
 
 export default function ShirtsPage() {
-    const [selectedColor, setSelectedColor] = useState(data.colors[0]);
-    const [selectedSize, setSelectedSize] = useState(data.sizes[0]);
+    const searchParams = useSearchParams();
 
-    // curring
-    const handleSelect = (setState) => (e) => {
-        setState(e.target.attributes['dataSet'].value)
-    }
-
+    const selectedColor = searchParams.get('color') || data.colors[0];
+    const selectedSize = searchParams.get('size') || data.sizes[0];
 
     return (
-        <main className={`full-size`}>
+        <main className={`full-size ${classes.mainContainer}`}>
             <section className={`${classes.card} ${classes.grid}`}>
                 {/* image */}
                 <div>
@@ -64,12 +61,13 @@ export default function ShirtsPage() {
                         <div className={`${classes.buttonGroup}`}>
                             {
                                 data.colors.map(color => (
-                                    <button
+                                    <Link
+                                        href={`?color=${color}&size=${selectedSize}`}
                                         key={`select this from ${color}`}
                                         className={`${selectedColor === color ? classes.active : ''}`}
-                                        dataSet={color}
-                                        onClick={handleSelect(setSelectedColor)}
-                                    >{color}</button>
+                                    >
+                                        {color}
+                                    </Link>
                                 )
                                 )
                             }
@@ -78,12 +76,13 @@ export default function ShirtsPage() {
                         <div className={`${classes.buttonGroup}`}>
                             {
                                 data.sizes.map(size => (
-                                    <button
+                                    <Link
+                                        href={`?color=${selectedColor}&size=${size}`}
                                         key={size}
                                         className={`${selectedSize === size ? classes.active : ''}`}
-                                        dataSet={size}
-                                        onClick={handleSelect(setSelectedSize)}
-                                    >{size}</button>
+                                    >
+                                        {size}
+                                    </Link>
                                 )
                                 )
                             }
