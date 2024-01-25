@@ -1,9 +1,7 @@
-'use client'
 
 import Image from 'next/image'
 import classes from './page.module.css'
 import Link from 'next/link'
-import { useSearchParams } from 'next/navigation'
 
 //
 
@@ -28,11 +26,10 @@ const data = {
 
 //
 
-export default function ShirtsPage() {
-    const searchParams = useSearchParams();
+export default function ShirtsPage({ searchParams }) {
 
-    const selectedColor = searchParams.get('color') || data.colors[0];
-    const selectedSize = searchParams.get('size') || data.sizes[0];
+    const selectedColor = searchParams.color || data.colors[0];
+    const selectedSize = searchParams.size || data.sizes[0];
 
     return (
         <main className={`full-size ${classes.mainContainer}`}>
