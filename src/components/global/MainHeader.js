@@ -21,7 +21,7 @@ export default function MainHeader() {
                         <Link href={'/meals/share'}>Share Meals</Link>
                     </li>
                     <li>
-                        <Link href={'/meals/shirts'}>Choose Shirt</Link>
+                        <Link href={'/shirts'}>Choose Shirt</Link>
                     </li>
                 </ul>
             </nav>
